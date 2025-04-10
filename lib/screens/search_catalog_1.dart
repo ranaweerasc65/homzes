@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:homzes/screens/search_catalog_3.dart';
 
 class SearchCatalog1 extends StatelessWidget {
   const SearchCatalog1({super.key});
@@ -447,23 +448,6 @@ class PropertyCardVertical extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-// Placeholder for SearchCatalog3
-class SearchCatalog3 extends StatelessWidget {
-  const SearchCatalog3({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Search & Catalog 3'),
-      ),
-      body: const Center(
-        child: Text('Search & Catalog 3 Screen'),
       ),
     );
   }
