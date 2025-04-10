@@ -30,27 +30,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: 1.2.2
-  getwidget: ^3.0.0
-  page_transition: ^2.0.9
-  animate_do: ^3.1.2
-  intl_phone_number_input: ^0.7.4
-  email_validator: ^2.0.0
-  intl: ^0.18.0
-  flip_card: ^0.6.0
-  patterns_canvas: ^0.4.0
-  loading_animation_widget: ^1.3.0
-  animated_background: ^2.0.0
-  lottie: ^1.1.0
-  image_picker: ^1.1.2
-  shared_preferences: ^2.2.2
+  
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   provider: ^6.1.2
-  permission_handler: ^11.3.1
-  animated_text_kit: ^4.2.2
+  
   
 
 dev_dependencies:
@@ -83,32 +69,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/app_logo.png
-    - assets/background_img.jpg
-    - assets/background_img.webp
-    - assets/reports_background.webp
-    - assets/doctor_background.jpg
-    - assets/prescription_background.jpg
-    - assets/background_img.png
-    - assets/claim_img.jpg
     - assets/app_icon.png
     - assets/new_app_logo.png
-    - assets/quick_access.jpg
-    - assets/quick_access.avif
-    - assets/quick_access.webp
-    - assets/shape.png
-    - assets/user.png
-    - assets/background_pattern.jpg
-    - assets/sick.png
-    - assets/bills.png
-    - assets/prescriptions.png
-    - assets/reports.png
-    - assets/checked.png
-    - assets/chip.png
-    - assets/mastercard.png
-    - assets/contact_less.png
-    - assets/submit_claim.jpg
-    - assets/prescription.jpg
-    - assets/bills.avif
     - assets/house image 1.png
     - assets/house_4.jpg
 
