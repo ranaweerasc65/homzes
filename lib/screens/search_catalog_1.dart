@@ -11,271 +11,284 @@ class SearchCatalog1 extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Header with time, user greeting, and icons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              color: const Color.fromARGB(255, 244, 233, 129),
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
                 children: [
-                  const Row(
-                    children: [
-                      Icon(Icons.menu, color: Colors.black),
-                      SizedBox(width: 10),
-                      Text(
-                        '9:41',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        'Hi, Sachini',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                      IconButton(
+                        icon: const Icon(
+                          Icons.menu,
                           color: Colors.black,
+                          size: 30,
                         ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                       ),
-                      const SizedBox(width: 10),
-                      CircleAvatar(
-                        radius: 15,
-                        backgroundColor: Colors.grey[300],
-                        child: const Text(
-                          'S',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
+                      const Row(
+                        children: [
+                          Text(
+                            'Hi, Sachini',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
+                          SizedBox(width: 10),
+                          CircleAvatar(
+                            radius: 15,
+                            backgroundColor: Color.fromARGB(255, 3, 154, 33),
+                            child: Text(
+                              'S',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  const Row(
-                    children: [
-                      Icon(Icons.signal_cellular_alt, color: Colors.black),
-                      SizedBox(width: 5),
-                      Icon(Icons.wifi, color: Colors.black),
-                      SizedBox(width: 5),
-                      Icon(Icons.battery_full, color: Colors.black),
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              // Search bar
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      blurRadius: 5,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: const TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search',
-                    border: InputBorder.none,
-                    icon: Icon(Icons.search, color: Colors.grey),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              // Featured Section
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'FEATURED',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      // Navigate to Search and Catalog 3 with animation
-                      Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder:
-                              (context, animation, secondaryAnimation) =>
-                                  const SearchCatalog3(),
-                          transitionsBuilder:
-                              (context, animation, secondaryAnimation, child) {
-                            const begin = Offset(1.0, 0.0);
-                            const end = Offset.zero;
-                            const curve = Curves.easeInOut;
-                            var tween = Tween(begin: begin, end: end)
-                                .chain(CurveTween(curve: curve));
-                            return SlideTransition(
-                              position: animation.drive(tween),
-                              child: child,
-                            );
-                          },
+                  const SizedBox(height: 20),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.green.withOpacity(0.2),
+                          blurRadius: 5,
+                          offset: const Offset(0, 6),
                         ),
-                      );
-                    },
-                    child: const Text(
-                      'View all',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 14,
+                      ],
+                    ),
+                    child: const TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Search',
+                        border: InputBorder.none,
+                        icon: Icon(Icons.search, color: Colors.grey),
                       ),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 10),
-              // Featured Properties List (Horizontal)
-              SizedBox(
-                height: 200,
-                child: StreamBuilder<QuerySnapshot>(
-                  stream: FirebaseFirestore.instance
-                      .collection('properties')
-                      .limit(3)
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                    if (snapshot.hasError) {
-                      return const Center(
-                          child: Text('Error loading properties'));
-                    }
-                    if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                      return const Center(child: Text('No properties found'));
-                    }
+            ),
+            Expanded(
+              child: Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/background.jpg'),
+                    fit: BoxFit.cover,
+                    repeat: ImageRepeat.repeat,
+                    opacity: 0.1,
+                  ),
+                ),
+                child: Container(
+                  color: Colors.white.withOpacity(0.3),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'FEATURED',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                    pageBuilder: (context, animation,
+                                            secondaryAnimation) =>
+                                        const SearchCatalog3(),
+                                    transitionsBuilder: (context, animation,
+                                        secondaryAnimation, child) {
+                                      const begin = Offset(1.0, 0.0);
+                                      const end = Offset.zero;
+                                      const curve = Curves.easeInOut;
+                                      var tween = Tween(begin: begin, end: end)
+                                          .chain(CurveTween(curve: curve));
+                                      return SlideTransition(
+                                        position: animation.drive(tween),
+                                        child: child,
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
+                              child: const Text(
+                                'View all',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        SizedBox(
+                          height: 200,
+                          child: StreamBuilder<QuerySnapshot>(
+                            stream: FirebaseFirestore.instance
+                                .collection('properties')
+                                .limit(3)
+                                .snapshots(),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return const Center(
+                                    child: CircularProgressIndicator());
+                              }
+                              if (snapshot.hasError) {
+                                return const Center(
+                                    child: Text('Error loading properties'));
+                              }
+                              if (!snapshot.hasData ||
+                                  snapshot.data!.docs.isEmpty) {
+                                return const Center(
+                                    child: Text('No properties found'));
+                              }
 
-                    final properties = snapshot.data!.docs;
+                              final properties = snapshot.data!.docs;
 
-                    return ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: properties.length,
-                      itemBuilder: (context, index) {
-                        final property =
-                            properties[index].data() as Map<String, dynamic>;
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: PropertyCard(
-                            imageUrl: property['Image'] ?? '',
-                            title: property['Title'] ?? 'No Title',
-                            price: property['Price'] ?? 'N/A',
+                              return ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: properties.length,
+                                itemBuilder: (context, index) {
+                                  final property = properties[index].data()
+                                      as Map<String, dynamic>;
+                                  return Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: PropertyCard(
+                                      imageUrl: property['Image'] ?? '',
+                                      title: property['Title'] ?? 'No Title',
+                                      price: property['Price'] ?? 'N/A',
+                                    ),
+                                  );
+                                },
+                              );
+                            },
                           ),
-                        );
-                      },
-                    );
-                  },
-                ),
-              ),
-              const SizedBox(height: 20),
-              // New Offers Section
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'NEW OFFERS',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      // Navigate to Search and Catalog 3 with animation
-                      Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder:
-                              (context, animation, secondaryAnimation) =>
-                                  const SearchCatalog3(),
-                          transitionsBuilder:
-                              (context, animation, secondaryAnimation, child) {
-                            const begin = Offset(1.0, 0.0);
-                            const end = Offset.zero;
-                            const curve = Curves.easeInOut;
-                            var tween = Tween(begin: begin, end: end)
-                                .chain(CurveTween(curve: curve));
-                            return SlideTransition(
-                              position: animation.drive(tween),
-                              child: child,
-                            );
-                          },
                         ),
-                      );
-                    },
-                    child: const Text(
-                      'View all',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 14,
-                      ),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'NEW OFFERS',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                    pageBuilder: (context, animation,
+                                            secondaryAnimation) =>
+                                        const SearchCatalog3(),
+                                    transitionsBuilder: (context, animation,
+                                        secondaryAnimation, child) {
+                                      const begin = Offset(1.0, 0.0);
+                                      const end = Offset.zero;
+                                      const curve = Curves.easeInOut;
+                                      var tween = Tween(begin: begin, end: end)
+                                          .chain(CurveTween(curve: curve));
+                                      return SlideTransition(
+                                        position: animation.drive(tween),
+                                        child: child,
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
+                              child: const Text(
+                                'View all',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        Expanded(
+                          child: StreamBuilder<QuerySnapshot>(
+                            stream: FirebaseFirestore.instance
+                                .collection('properties')
+                                .snapshots(),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return const Center(
+                                    child: CircularProgressIndicator());
+                              }
+                              if (snapshot.hasError) {
+                                return const Center(
+                                    child: Text('Error loading properties'));
+                              }
+                              if (!snapshot.hasData ||
+                                  snapshot.data!.docs.isEmpty) {
+                                return const Center(
+                                    child: Text('No properties found'));
+                              }
+
+                              final properties = snapshot.data!.docs;
+
+                              return ListView.builder(
+                                itemCount: properties.length,
+                                itemBuilder: (context, index) {
+                                  final property = properties[index].data()
+                                      as Map<String, dynamic>;
+                                  return PropertyCardVertical(
+                                    imageUrl: property['Image'] ?? '',
+                                    title: property['Title'] ?? 'No Title',
+                                    price: property['Price'] ?? 'N/A',
+                                    rating: 4.9,
+                                    reviews: 29,
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              // New Offers Properties List (Vertical)
-              Expanded(
-                child: StreamBuilder<QuerySnapshot>(
-                  stream: FirebaseFirestore.instance
-                      .collection('properties')
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                    if (snapshot.hasError) {
-                      return const Center(
-                          child: Text('Error loading properties'));
-                    }
-                    if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                      return const Center(child: Text('No properties found'));
-                    }
-
-                    final properties = snapshot.data!.docs;
-
-                    return ListView.builder(
-                      itemCount: properties.length,
-                      itemBuilder: (context, index) {
-                        final property =
-                            properties[index].data() as Map<String, dynamic>;
-                        return PropertyCardVertical(
-                          imageUrl: property['Image'] ?? '',
-                          title: property['Title'] ?? 'No Title',
-                          price: property['Price'] ?? 'N/A',
-                          rating: 4.9, // Static rating for now
-                          reviews: 29, // Static reviews for now
-                        );
-                      },
-                    );
-                  },
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-// Widget for Featured Properties (Horizontal Cards)
-class PropertyCard extends StatelessWidget {
+class PropertyCard extends StatefulWidget {
   final String imageUrl;
   final String title;
   final String price;
@@ -288,6 +301,34 @@ class PropertyCard extends StatelessWidget {
   });
 
   @override
+  _PropertyCardState createState() => _PropertyCardState();
+}
+
+class _PropertyCardState extends State<PropertyCard>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 800),
+      vsync: this,
+    );
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
+    );
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: 150,
@@ -295,28 +336,32 @@ class PropertyCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
+            color: Colors.green.withOpacity(0.2),
             blurRadius: 5,
-            offset: const Offset(0, 2),
+            offset: const Offset(0, 6),
           ),
         ],
+        color: Colors.white,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(15),
-              topRight: Radius.circular(15),
-            ),
-            child: CachedNetworkImage(
-              imageUrl: imageUrl,
-              height: 120,
-              width: double.infinity,
-              fit: BoxFit.cover,
-              placeholder: (context, url) =>
-                  const Center(child: CircularProgressIndicator()),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
+          FadeTransition(
+            opacity: _fadeAnimation,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(15),
+                topRight: Radius.circular(15),
+              ),
+              child: CachedNetworkImage(
+                imageUrl: widget.imageUrl,
+                height: 120,
+                width: double.infinity,
+                fit: BoxFit.cover,
+                placeholder: (context, url) =>
+                    const Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
             ),
           ),
           Padding(
@@ -325,7 +370,7 @@ class PropertyCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  price,
+                  widget.price,
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -334,7 +379,7 @@ class PropertyCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  title,
+                  widget.title,
                   style: const TextStyle(
                     fontSize: 14,
                     color: Colors.black54,
@@ -351,8 +396,7 @@ class PropertyCard extends StatelessWidget {
   }
 }
 
-// Widget for New Offers Properties (Vertical Cards)
-class PropertyCardVertical extends StatelessWidget {
+class PropertyCardVertical extends StatefulWidget {
   final String imageUrl;
   final String title;
   final String price;
@@ -369,7 +413,38 @@ class PropertyCardVertical extends StatelessWidget {
   });
 
   @override
+  _PropertyCardVerticalState createState() => _PropertyCardVerticalState();
+}
+
+class _PropertyCardVerticalState extends State<PropertyCardVertical>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 800),
+      vsync: this,
+    );
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
+    );
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 600;
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Container(
@@ -377,74 +452,155 @@ class PropertyCardVertical extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
+              color: Colors.green.withOpacity(0.2),
               blurRadius: 5,
-              offset: const Offset(0, 2),
+              offset: const Offset(0, 6),
             ),
           ],
+          color: Colors.white,
         ),
-        child: Row(
+        child: Stack(
           children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(15),
-                bottomLeft: Radius.circular(15),
-              ),
-              child: CachedNetworkImage(
-                imageUrl: imageUrl,
-                height: 100,
-                width: 120,
-                fit: BoxFit.cover,
-                placeholder: (context, url) =>
-                    const Center(child: CircularProgressIndicator()),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      price,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.black54,
-                      ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: 5),
-                    Row(
-                      children: [
-                        const Icon(Icons.star, color: Colors.green, size: 16),
-                        const SizedBox(width: 5),
-                        Text(
-                          '$rating ($reviews Reviews)',
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.black54,
+            isSmallScreen
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FadeTransition(
+                        opacity: _fadeAnimation,
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(15),
+                            topRight: Radius.circular(15),
+                          ),
+                          child: CachedNetworkImage(
+                            imageUrl: widget.imageUrl,
+                            height: 150,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator()),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
                           ),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.price,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              widget.title,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: Colors.black54,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const SizedBox(height: 5),
+                            Row(
+                              children: [
+                                const Icon(Icons.star,
+                                    color: Colors.green, size: 16),
+                                const SizedBox(width: 5),
+                                Text(
+                                  '${widget.rating} (${widget.reviews} Reviews)',
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.black54,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
+                : Row(
+                    children: [
+                      FadeTransition(
+                        opacity: _fadeAnimation,
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(15),
+                            bottomLeft: Radius.circular(15),
+                          ),
+                          child: CachedNetworkImage(
+                            imageUrl: widget.imageUrl,
+                            height: 100,
+                            width: 120,
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator()),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                widget.price,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              const SizedBox(height: 5),
+                              Text(
+                                widget.title,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black54,
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              const SizedBox(height: 5),
+                              Row(
+                                children: [
+                                  const Icon(Icons.star,
+                                      color: Colors.green, size: 16),
+                                  const SizedBox(width: 5),
+                                  Text(
+                                    '${widget.rating} (${widget.reviews} Reviews)',
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.black54,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+            const Positioned(
+              top: 8,
+              right: 8,
+              child: Icon(
+                Icons.favorite_border,
+                color: Color.fromARGB(255, 243, 239, 239),
+                size: 24,
               ),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.favorite_border, color: Colors.grey),
             ),
           ],
         ),
