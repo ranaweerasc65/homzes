@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1001815341874",
+    "project_id": "homzes-79ec5",
+    "storage_bucket": "homzes-79ec5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001815341874:android:91b25ea841e37a94db752b",
+        "android_client_info": {
+          "package_name": "com.example.homzes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqUfXSFvDLBKaQEefN7STUnrDE5VpZzpk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

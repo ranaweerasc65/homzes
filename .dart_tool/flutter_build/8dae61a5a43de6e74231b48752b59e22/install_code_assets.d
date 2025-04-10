@@ -1,0 +1,1 @@
+ C:\\xampp\\htdocs\\flutter_project_hayleys\\.dart_tool\\flutter_build\\8dae61a5a43de6e74231b48752b59e22\\native_assets.json: 
