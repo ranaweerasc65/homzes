@@ -13,64 +13,76 @@ class SearchCatalog3 extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Custom AppBar with status bar, back button, and search
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Container(
+              color: const Color.fromARGB(255, 175, 251, 158),
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
-                        icon: const Icon(Icons.arrow_back, color: Colors.black),
+                        icon: const Icon(
+                          Icons.menu,
+                          color: Colors.black,
+                          size: 30,
+                        ),
                         onPressed: () {
-                          Navigator.pop(
-                              context); // Navigate back to SearchCatalog1
+                          Navigator.pop(context);
                         },
                       ),
-                      const SizedBox(width: 10),
-                      const Text(
-                        '9:41',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
+                      const Row(
+                        children: [
+                          Text(
+                            'Hi, Sachini',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          CircleAvatar(
+                            radius: 15,
+                            backgroundColor: Color.fromARGB(255, 3, 154, 33),
+                            child: Text(
+                              'S',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  const Row(
-                    children: [
-                      Icon(Icons.signal_cellular_alt, color: Colors.black),
-                      SizedBox(width: 5),
-                      Icon(Icons.wifi, color: Colors.black),
-                      SizedBox(width: 5),
-                      Icon(Icons.battery_full, color: Colors.black),
-                    ],
+                  const SizedBox(height: 20),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.green.withOpacity(0.2),
+                          blurRadius: 5,
+                          offset: const Offset(0, 6),
+                        ),
+                      ],
+                    ),
+                    child: const TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Search',
+                        border: InputBorder.none,
+                        icon: Icon(Icons.search, color: Colors.grey),
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: const TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search',
-                    border: InputBorder.none,
-                    icon: Icon(Icons.search, color: Colors.grey),
-                  ),
-                ),
-              ),
-            ),
             const SizedBox(height: 20),
-            // Title
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
@@ -83,7 +95,6 @@ class SearchCatalog3 extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            // Property List
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -107,7 +118,6 @@ class SearchCatalog3 extends StatelessWidget {
 
                     return RefreshIndicator(
                       onRefresh: () async {
-                        // Refresh the data by rebuilding the StreamBuilder
                         return Future.delayed(const Duration(seconds: 1));
                       },
                       child: ListView.builder(
@@ -139,7 +149,6 @@ class SearchCatalog3 extends StatelessWidget {
   }
 }
 
-// Widget for Property Cards
 class PropertyCard extends StatelessWidget {
   final String imageUrl;
   final String title;
@@ -160,105 +169,193 @@ class PropertyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 600;
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
       child: Container(
         decoration: BoxDecoration(
+          color: Colors.white,
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
+              color: Colors.green.withOpacity(0.2),
               blurRadius: 5,
-              offset: const Offset(0, 2),
+              offset: const Offset(0, 6),
             ),
           ],
         ),
         child: Stack(
           children: [
-            Row(
-              children: [
-                ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    bottomLeft: Radius.circular(15),
-                  ),
-                  child: CachedNetworkImage(
-                    imageUrl: imageUrl,
-                    height: 120,
-                    width: 120,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) =>
-                        const Center(child: CircularProgressIndicator()),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
+            isSmallScreen
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(15),
+                        ),
+                        child: CachedNetworkImage(
+                          imageUrl: imageUrl,
+                          height: 150,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) =>
+                              const Center(child: CircularProgressIndicator()),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 8, vertical: 4),
-                              decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Text(
-                                '$numberOfBeds Beds',
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.black54,
+                            Row(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8, vertical: 4),
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue[50],
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child: Text(
+                                    '$numberOfBeds Beds',
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.black87,
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                const SizedBox(width: 8),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8, vertical: 4),
+                                  decoration: BoxDecoration(
+                                    color: Colors.pink[50],
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child: Text(
+                                    '$numberOfBathrooms Bathrooms',
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(width: 8),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 8, vertical: 4),
-                              decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                borderRadius: BorderRadius.circular(15),
+                            const SizedBox(height: 8),
+                            Text(
+                              title,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
                               ),
-                              child: Text(
-                                '$numberOfBathrooms Bathroom',
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.black54,
-                                ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              location,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: Colors.black54,
                               ),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 8),
-                        Text(
-                          title,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  )
+                : Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          bottomLeft: Radius.circular(15),
                         ),
-                        const SizedBox(height: 4),
-                        Text(
-                          location,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: Colors.black54,
+                        child: CachedNetworkImage(
+                          imageUrl: imageUrl,
+                          height: 120,
+                          width: 120,
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) =>
+                              const Center(child: CircularProgressIndicator()),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 4),
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey[200],
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    child: Text(
+                                      '$numberOfBeds Beds',
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 4),
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey[200],
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    child: Text(
+                                      '$numberOfBathrooms Bathroom',
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                title,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                location,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black54,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
-            ),
             Positioned(
               right: 16,
               bottom: 16,

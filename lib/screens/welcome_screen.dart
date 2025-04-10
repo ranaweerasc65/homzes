@@ -31,7 +31,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       ),
     );
 
-    // Slide animation for the text
     _slideAnimation = Tween<Offset>(
       begin: const Offset(0, -1),
       end: Offset.zero,
@@ -42,7 +41,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       ),
     );
 
-    // Scale animation for the buttons (one-time animation)
     _buttonScaleAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _controller,
@@ -66,7 +64,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/house image 1.png', // Use the local image
+              'assets/house image 1.png',
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) =>
                   const Icon(Icons.error),
@@ -154,8 +152,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   const SizedBox(height: 20),
                   Center(
                     child: AnimatedBuilder(
-                      animation:
-                          _buttonScaleAnimation, // Use the same scale animation for the "Create an account" button
+                      animation: _buttonScaleAnimation,
                       builder: (context, child) {
                         return Transform.scale(
                           scale: _buttonScaleAnimation.value,

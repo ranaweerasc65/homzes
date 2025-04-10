@@ -121,14 +121,27 @@ class SearchCatalog1 extends StatelessWidget {
                                         const SearchCatalog3(),
                                     transitionsBuilder: (context, animation,
                                         secondaryAnimation, child) {
-                                      const begin = Offset(1.0, 0.0);
-                                      const end = Offset.zero;
+                                      const beginScale = 0.8;
+                                      const endScale = 1.0;
+                                      const beginOpacity = 0.0;
+                                      const endOpacity = 1.0;
                                       const curve = Curves.easeInOut;
-                                      var tween = Tween(begin: begin, end: end)
+
+                                      var scaleTween = Tween(
+                                              begin: beginScale, end: endScale)
                                           .chain(CurveTween(curve: curve));
-                                      return SlideTransition(
-                                        position: animation.drive(tween),
-                                        child: child,
+                                      var opacityTween = Tween(
+                                              begin: beginOpacity,
+                                              end: endOpacity)
+                                          .chain(CurveTween(curve: curve));
+
+                                      return ScaleTransition(
+                                        scale: animation.drive(scaleTween),
+                                        child: FadeTransition(
+                                          opacity:
+                                              animation.drive(opacityTween),
+                                          child: child,
+                                        ),
                                       );
                                     },
                                   ),
@@ -211,14 +224,27 @@ class SearchCatalog1 extends StatelessWidget {
                                         const SearchCatalog3(),
                                     transitionsBuilder: (context, animation,
                                         secondaryAnimation, child) {
-                                      const begin = Offset(1.0, 0.0);
-                                      const end = Offset.zero;
+                                      const beginScale = 0.8;
+                                      const endScale = 1.0;
+                                      const beginOpacity = 0.0;
+                                      const endOpacity = 1.0;
                                       const curve = Curves.easeInOut;
-                                      var tween = Tween(begin: begin, end: end)
+
+                                      var scaleTween = Tween(
+                                              begin: beginScale, end: endScale)
                                           .chain(CurveTween(curve: curve));
-                                      return SlideTransition(
-                                        position: animation.drive(tween),
-                                        child: child,
+                                      var opacityTween = Tween(
+                                              begin: beginOpacity,
+                                              end: endOpacity)
+                                          .chain(CurveTween(curve: curve));
+
+                                      return ScaleTransition(
+                                        scale: animation.drive(scaleTween),
+                                        child: FadeTransition(
+                                          opacity:
+                                              animation.drive(opacityTween),
+                                          child: child,
+                                        ),
                                       );
                                     },
                                   ),
@@ -598,7 +624,7 @@ class _PropertyCardVerticalState extends State<PropertyCardVertical>
               right: 8,
               child: Icon(
                 Icons.favorite_border,
-                color: Color.fromARGB(255, 243, 239, 239),
+                color: Colors.grey,
                 size: 24,
               ),
             ),

@@ -3,8 +3,7 @@ import '../models/property.dart';
 
 class PropertyCard extends StatelessWidget {
   final Property property;
-  final bool
-      isFeatured; // To differentiate between Featured and New offers cards
+  final bool isFeatured;
 
   const PropertyCard({
     super.key,
@@ -29,7 +28,7 @@ class PropertyCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(75), // Circular image
+            borderRadius: BorderRadius.circular(75),
             child: Image.network(
               property.image,
               width: 150,
@@ -122,7 +121,7 @@ class PropertyCard extends StatelessWidget {
                         ),
                         SizedBox(width: 4),
                         Text(
-                          '4.9 (29 Reviews)', // This could be dynamic if you add a rating field
+                          '4.9 (29 Reviews)',
                           style: TextStyle(fontSize: 14),
                         ),
                       ],
