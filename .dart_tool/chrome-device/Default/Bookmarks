@@ -1,0 +1,218 @@
+{
+   "checksum": "73f2a2385a028401f2cb23f8600aa6f4",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13388743854561084",
+            "date_last_used": "0",
+            "guid": "0bd33f42-18ab-4526-b104-ecf53c7ee700",
+            "id": "30",
+            "name": "Booking.com",
+            "type": "url",
+            "url": "https://www.booking.com/index.html?aid=1980379&label=NW21C2EF"
+         }, {
+            "date_added": "13388743854560924",
+            "date_last_used": "0",
+            "guid": "fb234a49-4f95-420e-83d1-f73359478a72",
+            "id": "29",
+            "name": "Express VPN",
+            "type": "url",
+            "url": "http://js.redirect.hp.com/jumpstation?bd=expressvpn&c=*&locale=en_us&pf=*&s=*&tp=edge"
+         }, {
+            "date_added": "13388743854560714",
+            "date_last_used": "0",
+            "guid": "019c6651-5659-4b02-aefa-c1e4b5cc7c2a",
+            "id": "28",
+            "name": "McAfee Security",
+            "type": "url",
+            "url": "http://www.mcafee.com/consumer/v/browserfav/hp.html"
+         }, {
+            "date_added": "13388743854560176",
+            "date_last_used": "0",
+            "guid": "94f0fe79-9b2c-4638-88dd-451dbed6cbdc",
+            "id": "27",
+            "name": "LastPass password manager",
+            "type": "url",
+            "url": "http://js.redirect.hp.com/jumpstation?bd=lastpass&c=*&locale=*&pf=*&s=*&tp=edge"
+         }, {
+            "date_added": "13366030362354867",
+            "date_last_used": "0",
+            "guid": "34dd815d-ab0f-41e8-ba03-71736c45cf1a",
+            "id": "17",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Time Table 8th Semester - Google Sheets",
+            "type": "url",
+            "url": "https://docs.google.com/spreadsheets/d/1lmnmoGQgHSu9WW0Ri7WNibEt0WpqGN1zLAKF2JcjFN4/edit?gid=0#gid=0"
+         }, {
+            "date_added": "13366189668959441",
+            "date_last_used": "0",
+            "guid": "b60c42d4-74ce-44aa-aade-6c22cdd7f9c2",
+            "id": "18",
+            "name": "2_2024_06_25.mp4 - MEGA",
+            "type": "url",
+            "url": "https://mega.nz/file/DJclXKQS#GIRdeePruZlGAPDz_lw99linffuckyOFvGV0m1NAB7Y"
+         }, {
+            "date_added": "13368699027904320",
+            "date_last_used": "0",
+            "guid": "8bdc7e2c-e3bf-4d17-b315-d825e7d42dd1",
+            "id": "19",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Sysco - Google Sheets",
+            "type": "url",
+            "url": "https://docs.google.com/spreadsheets/d/1gcfhjiTV4LJqoXKvtDW8h6QpEVbRHu1ja4r5a36NKCw/edit?gid=0#gid=0"
+         }, {
+            "date_added": "13370087654036250",
+            "date_last_used": "0",
+            "guid": "ad41e80d-0281-44db-8923-5d5304c035d3",
+            "id": "20",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Data Networks - Google Drive",
+            "type": "url",
+            "url": "https://drive.google.com/drive/folders/11HeM_lashB44DMRv3a6Lyjy1AmpbiFOF"
+         }, {
+            "date_added": "13371145298681078",
+            "date_last_used": "0",
+            "guid": "f774ba57-4b76-4226-8793-ca7b54710194",
+            "id": "21",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Assignment 2[1].pdf",
+            "type": "url",
+            "url": "file:///C:/Users/ranaw/AppData/Local/Microsoft/Windows/INetCache/IE/NJDU6G1J/Assignment%202[1].pdf"
+         }, {
+            "date_added": "13371145306178770",
+            "date_last_used": "0",
+            "guid": "21dfffb2-f586-4227-8186-342d795ff28b",
+            "id": "22",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Assignment 1[1].pdf",
+            "type": "url",
+            "url": "file:///C:/Users/ranaw/AppData/Local/Microsoft/Windows/INetCache/IE/FTOLOPE0/Assignment%201[1].pdf"
+         }, {
+            "date_added": "13372148880387981",
+            "date_last_used": "0",
+            "guid": "f0d63adf-20ee-4acd-9cd4-2d0928139f13",
+            "id": "23",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "deie - Home",
+            "type": "url",
+            "url": "https://engugruhaclk.sharepoint.com/sites/deie/SitePages/Home.aspx?csf=1&web=1&share=EQE7XJLSxHtCntMbFqiOCQIBdj3uoLZZp0B9ZQ0EaqwzKg&e=jbDcol&CID=e325cc57-59f1-4433-8402-2dd496d593cf"
+         }, {
+            "date_added": "13316360423195939",
+            "date_last_used": "0",
+            "guid": "1de7a0c1-a234-45ea-9ab2-db6264b2ae1e",
+            "id": "24",
+            "name": "LastPass",
+            "type": "url",
+            "url": "https://www.lastpass.com/hpwelcome"
+         }, {
+            "date_added": "13388743785646897",
+            "date_last_used": "0",
+            "guid": "d4b2b518-aa0d-408f-9b9a-05bfff5cea44",
+            "id": "9",
+            "name": "Booking.com",
+            "type": "url",
+            "url": "https://www.booking.com/index.html?aid=1980379&label=NW21C2EF"
+         }, {
+            "date_added": "13388743785646758",
+            "date_last_used": "0",
+            "guid": "45218d53-056d-4847-8066-4f2674670106",
+            "id": "8",
+            "name": "Express VPN",
+            "type": "url",
+            "url": "http://js.redirect.hp.com/jumpstation?bd=expressvpn&c=*&locale=en_us&pf=*&s=*&tp=edge"
+         }, {
+            "date_added": "13388743785646534",
+            "date_last_used": "0",
+            "guid": "2fd18e49-45d2-4331-8b82-7c9673f08f24",
+            "id": "7",
+            "name": "McAfee Security",
+            "type": "url",
+            "url": "http://www.mcafee.com/consumer/v/browserfav/hp.html"
+         }, {
+            "date_added": "13388743785644240",
+            "date_last_used": "0",
+            "guid": "b06e2554-bdfe-440e-a8b1-cdca936f67f7",
+            "id": "6",
+            "name": "LastPass password manager",
+            "type": "url",
+            "url": "http://js.redirect.hp.com/jumpstation?bd=lastpass&c=*&locale=*&pf=*&s=*&tp=edge"
+         } ],
+         "date_added": "13388743785106371",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Bookmarks bar",
+         "type": "folder"
+      },
+      "other": {
+         "children": [ {
+            "children": [ {
+               "date_added": "13316360423195939",
+               "date_last_used": "0",
+               "guid": "91d32dfd-f02e-4afa-94b7-554bffd688f3",
+               "id": "14",
+               "name": "LastPass",
+               "type": "url",
+               "url": "https://www.lastpass.com/hpwelcome"
+            } ],
+            "date_added": "13388743789931845",
+            "date_last_used": "0",
+            "date_modified": "0",
+            "guid": "b2352732-55e2-4cbf-bdb1-291e55743c28",
+            "id": "13",
+            "name": "HP",
+            "type": "folder"
+         }, {
+            "date_added": "13324631395177612",
+            "date_last_used": "13359968706480222",
+            "guid": "1dc6d7f2-8ac8-42c9-83c7-f11a7f738bdc",
+            "id": "15",
+            "name": "GitHub - RanaweeraHK/quick_sort: Recursive quick sort algorithm and non-recursive quick sort algorithm",
+            "type": "url",
+            "url": "https://github.com/RanaweeraHK/quick_sort"
+         }, {
+            "date_added": "13359916336761155",
+            "date_last_used": "0",
+            "guid": "084f90c9-70c0-4b23-a3cb-3bc02c07044f",
+            "id": "16",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "th4ruka",
+            "type": "url",
+            "url": "https://github.com/th4ruka"
+         } ],
+         "date_added": "13388743785106374",
+         "date_last_used": "0",
+         "date_modified": "13359916336761155",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13388743785106375",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

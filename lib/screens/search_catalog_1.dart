@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-//import '../screens/search_catalog_3.dart';
 
 class SearchCatalog1 extends StatelessWidget {
   const SearchCatalog1({super.key});
@@ -20,20 +19,22 @@ class SearchCatalog1 extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
+                  const Row(
                     children: [
-                      CircleAvatar(
-                        radius: 15,
-                        backgroundColor: Colors.grey[300],
-                        child: const Text(
-                          'S',
-                          style: TextStyle(
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      Icon(Icons.menu, color: Colors.black),
+                      SizedBox(width: 10),
+                      Text(
+                        '9:41',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
                         ),
                       ),
-                      const SizedBox(width: 10),
+                    ],
+                  ),
+                  Row(
+                    children: [
                       const Text(
                         'Hi, Sachini',
                         style: TextStyle(
@@ -43,6 +44,17 @@ class SearchCatalog1 extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 10),
+                      CircleAvatar(
+                        radius: 15,
+                        backgroundColor: Colors.grey[300],
+                        child: const Text(
+                          'S',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                   const Row(
@@ -95,26 +107,26 @@ class SearchCatalog1 extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       // Navigate to Search and Catalog 3 with animation
-                      //Navigator.push(
-                      // context,
-                      // PageRouteBuilder(
-                      //   pageBuilder:
-                      //       (context, animation, secondaryAnimation) =>
-                      //           const SearchCatalog3(),
-                      //   transitionsBuilder:
-                      //       (context, animation, secondaryAnimation, child) {
-                      //     const begin = Offset(1.0, 0.0);
-                      //     const end = Offset.zero;
-                      //     const curve = Curves.easeInOut;
-                      //     var tween = Tween(begin: begin, end: end)
-                      //         .chain(CurveTween(curve: curve));
-                      //     return SlideTransition(
-                      //       position: animation.drive(tween),
-                      //       child: child,
-                      //     );
-                      //   },
-                      // ),
-                      //  );
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) =>
+                                  const SearchCatalog3(),
+                          transitionsBuilder:
+                              (context, animation, secondaryAnimation, child) {
+                            const begin = Offset(1.0, 0.0);
+                            const end = Offset.zero;
+                            const curve = Curves.easeInOut;
+                            var tween = Tween(begin: begin, end: end)
+                                .chain(CurveTween(curve: curve));
+                            return SlideTransition(
+                              position: animation.drive(tween),
+                              child: child,
+                            );
+                          },
+                        ),
+                      );
                     },
                     child: const Text(
                       'View all',
@@ -184,26 +196,26 @@ class SearchCatalog1 extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       // Navigate to Search and Catalog 3 with animation
-                      // Navigator.push(
-                      //   context,
-                      //   PageRouteBuilder(
-                      //     pageBuilder:
-                      //         (context, animation, secondaryAnimation) =>
-                      //             const SearchCatalog3(),
-                      //     transitionsBuilder:
-                      //         (context, animation, secondaryAnimation, child) {
-                      //       const begin = Offset(1.0, 0.0);
-                      //       const end = Offset.zero;
-                      //       const curve = Curves.easeInOut;
-                      //       var tween = Tween(begin: begin, end: end)
-                      //           .chain(CurveTween(curve: curve));
-                      //       return SlideTransition(
-                      //         position: animation.drive(tween),
-                      //         child: child,
-                      //       );
-                      //     },
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) =>
+                                  const SearchCatalog3(),
+                          transitionsBuilder:
+                              (context, animation, secondaryAnimation, child) {
+                            const begin = Offset(1.0, 0.0);
+                            const end = Offset.zero;
+                            const curve = Curves.easeInOut;
+                            var tween = Tween(begin: begin, end: end)
+                                .chain(CurveTween(curve: curve));
+                            return SlideTransition(
+                              position: animation.drive(tween),
+                              child: child,
+                            );
+                          },
+                        ),
+                      );
                     },
                     child: const Text(
                       'View all',
@@ -245,11 +257,8 @@ class SearchCatalog1 extends StatelessWidget {
                           imageUrl: property['Image'] ?? '',
                           title: property['Title'] ?? 'No Title',
                           price: property['Price'] ?? 'N/A',
-                          rating:
-                              double.tryParse(property['Rating'] ?? '0.0') ??
-                                  0.0,
-                          reviews:
-                              int.tryParse(property['Reviews'] ?? '0') ?? 0,
+                          rating: 4.9, // Static rating for now
+                          reviews: 29, // Static reviews for now
                         );
                       },
                     );
@@ -438,6 +447,23 @@ class PropertyCardVertical extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+// Placeholder for SearchCatalog3
+class SearchCatalog3 extends StatelessWidget {
+  const SearchCatalog3({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Search & Catalog 3'),
+      ),
+      body: const Center(
+        child: Text('Search & Catalog 3 Screen'),
       ),
     );
   }
